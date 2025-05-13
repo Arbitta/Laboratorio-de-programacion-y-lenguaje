@@ -8,6 +8,9 @@ const nombreGuardado = localStorage.getItem("nombreUsuario");
 const long7 = ["gaviota", "informe", "revista", "esquema"];
 const long8 = ["ambiente", "historia", "personas"];
 const long10 = ["calendario", "transporte" ,"desarrollo"];
+let estadoVisible = [];
+let letrasPistasMostradas = [];
+let palabraOculta = "";
 
 let contadorAdivinado = 0;
 let contadoPistas = 0;
@@ -43,20 +46,55 @@ function mostrarJuego() {
 function ingresoLongitud() {
     const longSeleccionado = document.getElementById("idjuegoSeleccionado").value;
     const palabra = document.getElementById("palabra_secreta");
-    let palabra_seleccionada = "";
     switch (longSeleccionado) {
         case "7":
-            palabra_seleccionada = long7[Math.floor(Math.random() * long7.length)];
-            palabra.textContent = palabra_seleccionada;
+            palabraOculta = long7[Math.floor(Math.random() * long7.length)];
             break;
         case "8":
-            palabra_seleccionada = long8[Math.floor(Math.random() * long8.length)];
-            palabra.textContent = palabra_seleccionada;
+            palabraOculta = long8[Math.floor(Math.random() * long8.length)];
             break;
         case "10":
-            palabra_seleccionada = long10[Math.floor(Math.random() * long10.length)];
-            palabra.textContent = palabra_seleccionada;
+            palabraOculta = long10[Math.floor(Math.random() * long10.length)];
             break;
     }
+    estadoVisible = Array(palabraOculta.length).fill("_");
+    palabra.textContent = estadoVisible.join(" ");
 }
 
+function jugar() {
+    const letra = document.getElementById("id_palabraIngresada").value.toLowerCase(); //para que pueda ingresar mayuscull o minuscula
+    const labelAdivinada = document.getElementById("adivinada");
+    const labelPista = document.getElementById("pista");
+
+    let acierto = false;
+
+        for (let i = 0; i < palabraOculta.length; i++) {
+            if (palabraOculta[i] === letra) {
+                estadoVisible[i] = letra;
+                acierto = true;
+            }
+        }
+
+        if (acierto) {
+            document.getElementById("palabra_secreta").textContent = estadoVisible.join(" ");
+            contadorAdivinado += 1;
+            labelAdivinada.textContent = "Letras Adivinadas: " + contadorAdivinado;
+        } else {
+            for (let i = 0; i < palabraOculta.length; i++) {
+                const letrasPista = palabraOculta[i];
+                if (estadoVisible[i] === "_"  && !letrasPistasMostradas.includes(letrasPista)) {
+                    for (let j = 0; j < palabraOculta.length; j++) {
+                        if (palabraOculta[j] === letrasPista && estadoVisible[j]) {
+                            estadoVisible[j] = letrasPista;
+                        }
+                    }
+                    document.getElementById("palabra_secreta").textContent = estadoVisible.join(" ");
+                    contadoPistas += 1;
+                    labelPista.textContent = "Letras Pistas: " + contadoPistas;
+                    break;                
+                }
+            }
+        }
+
+
+}
