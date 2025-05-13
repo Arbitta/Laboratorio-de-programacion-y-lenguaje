@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>antigordas</title>
+    <link rel="stylesheet" href="CSS/antigordas.css"> <!-- Enlace a CSS -->
+    <link rel="icon" href="Imagen TP 2/descarga.jpeg">
+</head>
+<body>
+    <header>
+        <H1>TODO CASA DE NICO</H1>
+    </header>
+    <section>
+        <h2>Formulario antigordas</h2>
+        <article>
+            <h3>Gestion de minas</h3>
+            <form  name="form" id="idForm" method="get" action="nuevousuario@empresa.com.ar">
+                <fieldset>
+                    <legend>Ingrese los siguientes datos</legend>
+                    Apellido:
+                    <input type="text" name="apeUsuario" id="idApeUsuario" size="25" maxlength="25" placeholder="Ingrese su Apellido"><br><br>
+                    Nombre:
+                    <input type="text" name="nomUsuario" id="idNomUsuario" size="30" maxlength="50" placeholder="Ingrese su Nombre"><br><br>
+                    Cumpleaños(no ser menor):
+                    <input type="date" name="nacUsuario" id="idNacUsuario" min="1995-01-01" max="2025-01-01"><br><br>
+                    Habitacion de nico:
+                    <select id="idDeporte" name="Deportes" size="5" multiple>
+                        <option value="Fut" selected>Su pieza</option>
+                        <option value="Bas">baño</option>
+                        <option value="Han">pieza de la madre</option>
+                        <option value="Vol">quincho</option>
+                    </select><br><br>
+                    Peso(kg):
+                    <input type="number" name="peso" id="idPeso"><br><br>
+                    Foto suya:
+                    <input type="file" id="idFoto" name="foto"><br><br>
+                    Correo electronico:
+                    <input type="email" name="mailUsuario" id="idMailUsuario" size="30" maxlength="50" placeholder="Maximo 50 caracteres"><br><br>
+                    <input type="submit" name="enviar" id="idBtnEnviar" value="Enviar">
+                    <input type="reset" id="idBtnReset" value="Limpiar">
+
+
+                </fieldset>
+            </form>
+        </article>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mi Página Web</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Eventos</title>
+  <script>
+    function enviarForm() {
+      var cond1, cond2, check1, check2, cuadroTexto, formulario;
+      formulario = document.getElementById("formFormulario");
+      cuadroTexto = document.getElementById("txtNombre");
+      check1 = document.getElementById("chkOpcion1");
+      check2 = document.getElementById("chkOpcion2");
+
+      cond1 = (cuadroTexto.value.length != 0);
+      cond2 = (check1.checked || check2.checked);
+      if (!cond1 || !cond2) {
+        alert("Se envió el form");
+        if (!cond1) {
+          cuadroTexto.focus();
+        }
+      } else {
+        alert("Se envió el form");
+        formulario.submit();
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Ejemplo de consistencia de datos</h1>
+  <form id="formFormulario" name="formulario" method="post" action="escrip.php">
+    <p>Nombre: <input id="txtNombre" name="txtNombre" type="text" /></p>
+    <p>Opción 1: <input id="chkOpcion1" name="opO1" type="checkbox" value="1" /></p>
+    <p>Opción 2: <input id="chkOpcion2" name="opO2" type="checkbox" value="1" /></p>
+    <p><input id="btnEnviar" name="btnEnviar" type="button" onclick="enviarForm();" value="Enviar" /></p>
+  </form>
+  <footer><p>Archivo: Codigo_78_htm</p></footer>
+</body>
+</html>

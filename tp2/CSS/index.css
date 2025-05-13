@@ -1,0 +1,14 @@
+body {
+	background-color:lightyellow;
+}
+
+h1 {
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+}
+
+img {
+	height: 200px;
+	widows: 300px;
+}

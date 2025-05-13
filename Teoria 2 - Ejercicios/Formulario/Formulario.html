@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Formulario</title>
+    <link rel="stylesheet" href="Formulario.css"> <!-- Enlace a CSS -->
+</head>
+<body>
+    <header>
+        <h1>Formulario HTML</h1>
+    </header>
+	<section>
+		<h2>Gestión de usuario</h2>
+		<article>
+			<h3>Registro de usuario</h3> 
+			<form id="idFormulario" name="formu" method="post" action="rrhh@miempresa.com.ar">
+			<fieldset>
+				<legend>Ingrese los siguiente datos</legend>
+				Apellido: 
+				<input type="text" name="apeUsuario" id="idApeUsuario" size="25" maxlength="25" placeholder="Ingrese su Apellido"><br><br>
+				Nombre: 
+				<input type="text" name="nomUsuario" id="idNomUsuario" size="30" maxlength="50" placeholder="Ingrese su Nombre"><br><br>
+				Fecha de nacimiento: 
+				<input type="date" name="nacUsuario" id="idNacUsuario" min="1995-01-01" max="2025-01-01"><br><br>
+				Correo electronico:
+				<input type="email" name="mailUsuario" id="idMailUsuario" size="30" maxlength="50" placeholder="Maximo 50 caracteres"><br><br>
+				<input type="submit" name="enviar" id="idenviar" value="Enviar">
+			</fieldset>
+			</form>	
+		</article>
+	</section>	
+	<footer>
+        <p>&copy; 2025 Mi Página Web</p>
+    </footer>
+</body>
+</html>

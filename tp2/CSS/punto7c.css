@@ -1,0 +1,52 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 10px;
+}
+.solid {
+    border: 7px red solid;
+}
+
+.dotted {
+    border: 7px green dotted;
+}
+
+.dashed {
+    border: 7px green dashed;
+}
+
+.double {
+    border: 7px green double;
+}
+
+.groove {
+    border: 7px green groove;
+}
+
+.ridge {
+    border: 7px green ridge;
+}
+
+.inset {
+    border: 7px green ridge;
+}
+
+.outset {
+    border: 7px green outset;
+}
+
+image {
+    height: 200px;
+    width: 200px;
+}
+
+.opacidad1 {
+    opacity: 1;
+}
+
+.opacidad2 {
+    opacity: 0.6;
+}
+
+.opacidad3 {
+    opacity: 0.3;
+}

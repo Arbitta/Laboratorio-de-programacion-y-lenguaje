@@ -1,0 +1,64 @@
+body {
+    background-color: blanchedalmond;
+    margin: 10px;
+    padding: auto;
+    border: 2px black solid;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+header {
+    text-align: center;
+    background-color: #2464ec;
+    color: black;
+    padding: 1px 0;
+}
+
+.comienzo {
+    background-color: white;
+    padding: 20px 0;
+    padding: auto;
+    text-align: center;
+}
+
+.comienzo .texto {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    padding: 5px;
+}
+
+fieldset {
+    margin: 10px;
+}
+legend {
+    font-weight: bold;
+}
+.div_usuario {
+    display: none;
+    background-color: white;
+    padding: 10px 0;
+}
+
+.div_preguntas {
+    display: none;
+    background-color: white;
+    padding: 10px 0;
+}
+
+
+
+
+.resultado {
+    display: none;
+    background-color: white;
+    padding: 10px 0 ;
+}
+
+footer{
+    background-color: #2464ec;
+    text-align: center;
+    padding: 5px 0;
+}

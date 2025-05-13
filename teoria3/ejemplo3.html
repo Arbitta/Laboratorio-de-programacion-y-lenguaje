@@ -1,0 +1,26 @@
+<!-- Codigo_76.htm -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="text/javascript">
+function principal(){
+    var nombre, respuesta, newWindow;
+
+    window.document.title = "Estamos creando y cerrando ventanas nuevas!!";
+    nombre = window.prompt("Hola usuario!! Por favor, ingresa tu nombre:");
+    respuesta = window.confirm("¿Desea crear una nueva ventana?");
+    
+    if (respuesta){
+        newWindow = window.open("", "", "width=400,height=350,status=yes,resizable=yes,menubar=no");
+        newWindow.document.write("<h2>Bienvenido " + nombre + "</h2>");
+        newWindow.document.write("<input id=\"botonCerrar\" name=\"botonCerrar\" type=\"button\" onclick=\"window.close();\" value=\"Cerrar ventana\" />");
+        newWindow.document.bgColor = "#CCCCCC";
+        newWindow.focus();
+        window.document.write("Se creo la nueva ventana!!<br>");
+    }
+}
+</script>
+</head>
+<body onLoad="principal();">
+</body>
+</html>

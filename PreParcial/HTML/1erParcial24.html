@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/1erParcial24.css">
+    <title>Adivina la palabra</title>
+</head>
+<body>
+    <header><h1>Adivina la Palabra</h1></header>    
+    <div id="id_comienzo" class="div_comienzo"></div>
+
+    <div id="id_longitud" class="div_longitud">
+        <label>Cantidad de Letras: 
+            <select name="juego_longitud" id="idjuegoSeleccionado" onchange="mostrarJuego();">
+                <option value="">Elija</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+            </select>
+        </label>
+    </div>
+    
+    <div id="id_juego" class="div_juego">
+        <div id="id_palabra" class="div_palabra">
+            <h2>Palabra a advinar</h2>
+            <h2 id="palabra_secreta"></h2>
+            <label id="adivinada">Letras Adivinadas: 0</label>
+            <label id="pista">Lestas Pistas: 0</label>
+            <label>Ingrese la letra: <input type="text" maxlength="1" size="3"></label>
+            <button>Jugar</button>
+            <button>Abandonar</button>
+        </div>    
+    </div>
+    <div id="id_resultado" class="div_resultado"></div>
+
+    <script type="text/javascript" src="../JS/1erParcial24.js"></script>
+</body>
+</html>

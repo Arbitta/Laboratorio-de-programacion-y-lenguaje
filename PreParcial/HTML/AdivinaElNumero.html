@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/AdivinaElNumero.css">
+    <script type="text/javascript" src="../JS/AdivinaElNumero.js"></script>
+    <title>Adivina El Numero</title>
+</head>
+<body>
+    <header><h1>Adivina el Número</h1></header>
+    <section class="form">
+        <article>
+            <div class="div_juego">
+                <label for="juego">Ingresa un numero de 0 a 100:</label>
+                    <input id="id_numero" type="number" min="1" max="100">
+                    <input type="submit" id="btnJugar" value="Adivinar" onclick="adivinar();">
+                    <input type="button" id="rendirse" value="Rendirse" onclick="rendirse();">
+                    <input type="button" id="jugar" value="Jugar" onclick="jugarDeNuevo();">
+                    <p id="nroIntento">Nro de Intento: 0</p>
+                    <div id="mensaje"></div>
+                    <div id="resultado_final"></div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>

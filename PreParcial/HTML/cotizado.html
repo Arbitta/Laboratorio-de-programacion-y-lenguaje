@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/cotizado.css">
+    <script type="text/javascript" src="../JS/cotizado.js"></script>
+    <title>Veterinaria</title>
+</head>
+<body>
+    <header><h1>Veterinaria Alejandro Perez</h1></header>
+    <form  id="form_cotizador" action="">
+        <label for="tipo_servicios">Tipos de Servicios:</label>
+        <select name="tipo_de_servicios" id="idTipoServicios" onchange="mostrarDivs();">
+            <option value="">Seleccione un Servicio</option>
+            <option value="peluqueria">Peluqueria</option>
+            <option value="baño">Baño</option>
+            <option value="limpieza_de_acuario">Limpieza de acuario</option>
+            <option value="vacunacion">Vacunacion</option>
+            <option value="consulta_medica">Consulta Medica</option>
+        </select>
+        <div id="acuarioCampo" class="acuario">
+            <h2>Limpieza de Acuario</h2>
+            <label>Ingrese alto del acuario(mts):<input type="number" id="alto"></label>
+            <label for="ancho">Ingrese ancho del acuario(mts):<input type="number" id="ancho"></label>
+            <label for="cantidad_peces">Ingrese la cantidad aproximada de peces:<input type="number" id="peces"></label><hr>
+            <label for="ubicacion_acaurio">Ingrese el domicilio del acuario:<input type="text" required></label>
+        </div>
+    
+        <div id="mascotaCampo" class="mascota">
+            <h2>Servico Mascota</h2>
+            <label for="cant_animales">Ingrese la cantidad de animales:<input type="number" id="cantidadAnimal" min="1" max="10"></label>
+            <label for="raza">Ingrese la raza:<input type="text" id="raza"></label>
+            <label for="peso_aproximado">Ingrese el peso aproximado(kg):<input type="number" id="peso" min="1"></label>
+            <label for="agresivo">Son agresivo?:</label>
+            <select name="agresivo" id="idAgresivo">
+                <option value="no">no</option>
+                <option value="si">si</option>
+            </select>
+            <label for="cliente">Es cliente de la veterinaria?</label>
+            <select name="cliente" id="idVeterinaria">
+                <option value="si">si</option>
+                <option value="no">no</option>
+            </select><hr>
+            <label for="ingreso">Sucursal de ingreso</label>
+            <select name="sucursalIngreso" id="idSucursalIngreso" required>
+                <option value="Sucursal Pueyrredón">Sucursal Pueyrredón</option>
+                <option value="Sucursal Km 8">Sucursal Km 8</option>
+                <option value="Sucursal Caleta Córdoba">Sucursal Caleta Córdoba</option>
+                <option value="Veterinaria Central">Veterinaria Central</option>
+                <option value="Sucursal Rada Tilly">Sucursal Rada Tilly</option>
+            </select>
+            <label for="retiro">Sucursal de retiro</label>
+            <select name="sucursalRetiro" id="idSucursalRetiro" required>
+                <option value="Sucursal Pueyrredón">Sucursal Pueyrredón</option>
+                <option value="Sucursal Km 8">Sucursal Km 8</option>
+                <option value="Sucursal Caleta Córdoba">Sucursal Caleta Córdoba</option>
+                <option value="Veterinaria Central">Veterinaria Central</option>
+                <option value="Sucursal Rada Tilly">Sucursal Rada Tilly</option>
+            </select>
+        </div><br>
+        <label for="observaciones">Observaciones:</label>
+        <textarea name="obeservaciones" id="idObservaciones" rows="5" cols="40"></textarea><br>
+        <button type="button" id="agregarBtn" onclick="agregarServicio();">Agregar Servicio</button><br><br>
+    </form>
+      <h2>Servicios añadidos</h2>
+  <table id="tablaServicios">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Servicio</th>
+        <th>Precio del servicio Total</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table><br>
+    <input type="submit" name="enviar" id="idEnviar" onclick="confirmarFormulario();">
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/parcial21.css">
+    <script type="text/javascript" src="../JS/parcial21.js"></script>
+    <title>Test de aptitud</title>
+</head>
+<body>
+    <header><h1>Test de Aptitud</h1></header>
+    <section>
+        <article>
+            <form action="@empresacocina.com.ar" id="idForm" name="form" method="post">
+                <div class="comienzo" id="id_comienzo">
+                    <h2>Busqueda laboral</h2>
+                    <p class="texto">Tenemos dos puesto para ofrecerte, cocinero y ayudante de cocina, para nuestros retorant gourment</p>
+                    <p>Si te gustan los desafios realiza el sisguiente test y te diremos para que puesto tienen capacidad</p>
+                    <input type="button" value="Comenzar test" onclick="mostrarDiv();">
+                </div>
+                <div class="div_usuario" id="div_usuario">
+                    <fieldset>
+                        <legend>Datos personales:</legend>
+                        <label for="apellido">Apellido: <input type="text"></label>
+                        <label for="nombre">Nombre: <input type="text"></label>
+                        <label for="edad">Edad: <input type="number" min="11111111" max="99999999"></label>
+                        <label for="domicilio">Domicilio: <input type="text"></label>
+                        <input type="button" value="Comenzar Test" onclick="mostrarPreguntas();">
+                    </fieldset>
+                </div>
+
+                <div class="div_preguntas" id="div_preguntas">
+                    <fieldset>
+                        <legend>1. ¿Que ingredientes lleva un desayuno simple? </legend>
+                        <label><input type="checkbox" name="preg1" value="3"> Cafe o Te</label>
+                        <label><input type="checkbox" name="preg1" value="2"> Leche</label>
+                        <label><input type="checkbox" name="preg1" value="2">Tostada</label>
+                        <label><input type="checkbox" name="preg1" value="0"> Limón</label>
+                        <label><input type="checkbox" name="preg1" value="1"> Manteca</label>
+                        <label><input type="checkbox" name="preg1" value="2"> Medias lunas</label>
+                        <label><input type="checkbox" name="preg1" value="-1"> Ajo</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>2. ¿Que fruta seca sale de la uva?</legend>
+                        <label><input type="radio" name="preg2" value="0"> Anacardo</label>
+                        <label><input type="radio" name="preg2" value="10"> Pasas</label>
+                        <label><input type="radio" name="preg2" value="0"> Ciruelas</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>3. ¿Para que sirve el caldo corto?</legend>
+                        <label><input type="radio" name="preg3" value="10"> Para alimentos que necesitan poca coccion</label>
+                        <label><input type="radio" name="preg3" value="0"> Para quitar la grasa de la carne</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>4. ¿Cual es la temperatura maxima para freir?</legend>
+                        <label><input type="checkbox" name="preg4" value="8"> 180°C</label>
+                        <label><input type="checkbox" name="preg4" value="0"> 200°C</label>
+                        <label><input type="checkbox" name="preg4" value="2"> 170°C</label>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>5. ¿Como se llama el pan sin levadura?</legend>
+                        <label><input type="checkbox" name="preg5" value="0">Pan blanco</label>
+                        <label><input type="checkbox" name="preg5" value="2">Pan germinado</label>
+                        <label><input type="checkbox" name="preg5" value="8">Acimo</label>
+                    </fieldset>
+                    <input type="button"  value="Terminar test" onclick="calcularResultado();">
+                </div>
+                <div class="resultado" id="div_resultados">
+                    <h2>Resultados: </h2>
+                </div>
+            </form> 
+        </article>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mi Página Web</p>
+    </footer>
+</body>
+</html>

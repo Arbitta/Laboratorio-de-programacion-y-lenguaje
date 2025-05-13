@@ -1,0 +1,81 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: blanchedalmond;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background-color: #f4a460;
+    color: black;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+label, select, input, textarea {
+    display: block;
+    margin: 8px 0;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+
+form {
+    background-color: #fff8dc;
+    border: 1px solid #d2b48c;
+    padding: 20px;
+    margin: auto;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo para los botones */
+button, input[type="submit"] {
+    background-color:  #ff7f50;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th { /*encabezado*/
+    background-color: #deb887; /* marrón claro */
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.acuario {
+    display: none;
+}
+
+.mascota {
+    display: none;
+}
+
+
+h2 {
+    margin-top: 20px;
+    color: #8b4513;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #deb887;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bienvenida</title>
+</head>
+<body>
+
+<div id="contenido"></div>
+
+<script>
+  // Verificamos si ya hay un nombre guardado en el localStorage
+  const nombreGuardado = localStorage.getItem("nombreUsuario");
+  const contenido = document.getElementById("contenido");
+
+  if (nombreGuardado) {
+    // Si ya hay un nombre, mostramos la bienvenida
+    contenido.innerHTML = `<h2>¡Bienvenido de nuevo, ${nombreGuardado}!</h2>`;
+  } else {
+    // Si no hay nombre guardado, pedimos que lo ingrese
+    const nombre = prompt("¡Hola! ¿Cómo te llamás?");
+    if (nombre) {
+      localStorage.setItem("nombreUsuario", nombre);
+      contenido.innerHTML = `<h2>¡Bienvenido, ${nombre}!</h2>`;
+    } else {
+      contenido.innerHTML = `<h2>No ingresaste tu nombre.</h2>`;
+    }
+  }
+</script>
+
+</body>
+</html>
