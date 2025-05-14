@@ -11,7 +11,9 @@ function adivinar (){
     if (intento === maxIntento) {
         btnJugar.disabled = true;
         btnRendirse.disabled = true;
+        mostrarMensaje("El numero secreto era: " + numeroSecreto);
         mostrarResultado("Usted ha perdido :c");
+        return
     }
     if (numeroIngresado > numeroSecreto) {
         mostrarMensaje("Tu número " + numeroIngresado + " es mayor");

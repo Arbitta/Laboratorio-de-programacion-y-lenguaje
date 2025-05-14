@@ -96,5 +96,11 @@ function jugar() {
             }
         }
 
+        if (!estadoVisible.includes("_")) {
+            div_resultado.style.display = "block";
+            const label = document.createElement("h2");
+            label.textContent("Respuestas:");
+            div_resultado.appendChild(label); 
+        }
 
 }
