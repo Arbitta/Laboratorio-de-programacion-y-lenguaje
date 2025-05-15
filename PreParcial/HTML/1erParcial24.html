@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../CSS/1erParcial24.css">
     <title>Adivina la palabra</title>
 </head>
-<body>
+<body onload="usuario();">
     <header><h1>Adivina la Palabra</h1></header>    
     <div id="id_comienzo" class="div_comienzo"></div>
 
@@ -28,9 +28,8 @@
             <label id="adivinada">Letras Adivinadas: 0</label>
             <label id="pista">Lestas Pistas: 0</label>
             <label>Ingrese la letra: <input type="text" maxlength="1" size="3" id="id_palabraIngresada"></label>
-            <button onclick="jugar();">Adivinar</button>
-            <button>Jugar otra partida</button>
-            <button>Abandonar</button>
+            <label><button id="btnAdivinar" onclick="jugar();">Adivinar</button></label>
+            <label><button onclick="jugarOtraPartida();">Jugar otra partida</button><button onclick="abandonar();">Abandonar</button></label>
         </div>    
     </div>
     <div id="id_resultado" class="div_resultado"></div>

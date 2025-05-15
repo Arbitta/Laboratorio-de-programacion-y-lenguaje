@@ -14,27 +14,67 @@ let palabraOculta = "";
 
 let contadorAdivinado = 0;
 let contadoPistas = 0;
-//contador de ganadas¿?
 
-if (nombreGuardado) {
-    divComienzo.innerHTML = `
-    <h2>Bienvenido de nuevo, ${nombreGuardado}</h2>
-    <label>Tu ultimo acceso fue el: </label>
-    <label>Ya ganaste x partidas</label>
-    <button onclick="mostrarLongitud();">Ingresar a Jugar</button>
-    `;
-} else {
-    divComienzo.innerHTML = `
-    <h2>Bienvenido Nuevo usuario</h2>
-    <label>Por favor ingrese su nombre: </label>
-    <input type="text" id="id_nombre">
-    <button onclick="mostrarLongitud();">Ingresar a Jugar</button>
-    `;
+let ganadasTotales = 0;
+let fecha;
+//contador de ganadas¿?
+function usuario() {
+    if (nombreGuardado) {
+        const h2 = document.createElement("h2");
+        const labelAcceso = document.createElement("label");
+        const labelPartidas = document.createElement("label");
+        const btn = document.createElement("button");
+
+        h2.textContent = `Bienvenido de muevo, ${nombreGuardado}`;
+        labelAcceso.textContent = "Tu ultimo acceso fue el:" + fecha;
+        labelPartidas.textContent = "Ya ganaste xxx de partidas"
+        btn.textContent = "Ingresar a jugar"
+        btn.onclick = mostrarLongitud;
+
+        divComienzo.appendChild(h2);
+        divComienzo.appendChild(labelAcceso);
+        divComienzo.appendChild(labelPartidas);
+        divComienzo.appendChild(btn);
+
+    } else {
+        const h2 = document.createElement("h2");
+        const label =document.createElement("label");
+        const input = document.createElement("input");
+        const btn = document.createElement("button");
+        
+        h2.textContent = "Bienvenido Nuevo Usuario";
+        label.textContent = "Ingrese su nombre";
+        input.type = "text";
+        input.id = "id_nombre";
+        btn.textContent = "Guargar y Jugar"
+        btn.onclick = function (){
+            if (input.value.trim() === "") {
+                alert("Ingrese su nombre");
+            } else {
+                guardarDatos(input.value.trim());
+                mostrarLongitud();
+            }
+        }
+        divComienzo.appendChild(h2);
+        divComienzo.appendChild(label);
+        divComienzo.appendChild(input);
+        divComienzo.appendChild(btn);
+    }
 }
+
+function guardarDatos(nombre){
+   const fechaActual = new Date().toLocaleDateString();
+   const nombreGuardado = localStorage.setItem("nombreUsuario", nombre);
+   fecha = localStorage.setItem("UltimoAcceso", fechaActual);
+}
+
 
 function mostrarLongitud() {
     divComienzo.style.display = "none";
     div_longitud.style.display = "block";
+    div_juego.style.display = "none";
+    div_resultado.style.display = "none";
+    resetarValores();
 }
 
 function mostrarJuego() {
@@ -97,10 +137,36 @@ function jugar() {
         }
 
         if (!estadoVisible.includes("_")) {
+            document.getElementById("btnAdivinar").disabled = true;
+            const label = document.createElement("label");
+            if (contadorAdivinado > contadoPistas) {
+                label.textContent = "Ganaste!!!!"
+            } else {
+                label.textContent = "Perdiste!!!"
+            }
+            label.setAttribute("for", "inputRespuesta");
+            div_resultado.appendChild(label);
             div_resultado.style.display = "block";
-            const label = document.createElement("h2");
-            label.textContent("Respuestas:");
-            div_resultado.appendChild(label); 
         }
 
+}
+
+function jugarOtraPartida() {
+    document.getElementById("btnAdivinar").disabled = false;
+    mostrarLongitud();
+}
+
+function resetarValores() {
+    contadoPistas = 0;
+    contadorAdivinado = 0;    
+    const labelAdivinada = document.getElementById("adivinada");
+    const labelPista = document.getElementById("pista");
+
+    labelAdivinada.textContent = "Letras Adivinadas: 0"
+    labelPista.textContent = "Letras Pistas: 0"
+}
+
+function abandonar() {
+    div_juego.style.display = "none";
+    divComienzo.style.display = "block";
 }

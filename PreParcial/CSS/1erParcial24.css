@@ -2,7 +2,7 @@ body {
     font-family: "Segoe UI", sans-serif;
 }
 
-label {
+label, input{
     display: block;
     margin: 5px;
 }
