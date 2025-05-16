@@ -26,6 +26,7 @@ if (contadorGanadas === null) {
 }
 //contador de ganadas¿?
 function usuario() {
+    localStorage.clear();
     divComienzo.innerHTML = "";
     if (nombreGuardado) {
         const h2 = document.createElement("h2");

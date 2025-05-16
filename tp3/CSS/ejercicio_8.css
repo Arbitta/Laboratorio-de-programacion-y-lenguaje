@@ -1,0 +1,15 @@
+.anashe {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.botonesEspeciales {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.resultado {
+    width: 49%;
+    text-align: right;
+}
