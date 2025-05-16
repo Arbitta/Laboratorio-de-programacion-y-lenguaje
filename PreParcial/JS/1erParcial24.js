@@ -15,19 +15,27 @@ let palabraOculta = "";
 let contadorAdivinado = 0;
 let contadoPistas = 0;
 
-let ganadasTotales = 0;
-let fecha;
+let fechaActual = new Date().toLocaleDateString();
+let fecha = localStorage.getItem("UltimoAcceso");
+
+let contadorGanadas = localStorage.getItem("ganadas");
+
+if (contadorGanadas === null) {
+    contadorGanadas = 0;
+    localStorage.setItem("ganadas", contadorGanadas);
+}
 //contador de ganadas¿?
 function usuario() {
+    divComienzo.innerHTML = "";
     if (nombreGuardado) {
         const h2 = document.createElement("h2");
         const labelAcceso = document.createElement("label");
         const labelPartidas = document.createElement("label");
         const btn = document.createElement("button");
 
-        h2.textContent = `Bienvenido de muevo, ${nombreGuardado}`;
-        labelAcceso.textContent = "Tu ultimo acceso fue el:" + fecha;
-        labelPartidas.textContent = "Ya ganaste xxx de partidas"
+        h2.textContent = `Bienvenido de Nuevo, ${nombreGuardado}`;
+        labelAcceso.textContent = "Tu ultimo acceso fue el: " + fecha;
+        labelPartidas.textContent = `Ya ganaste ${contadorGanadas} de partidas`;
         btn.textContent = "Ingresar a jugar"
         btn.onclick = mostrarLongitud;
 
@@ -63,9 +71,9 @@ function usuario() {
 }
 
 function guardarDatos(nombre){
-   const fechaActual = new Date().toLocaleDateString();
-   const nombreGuardado = localStorage.setItem("nombreUsuario", nombre);
-   fecha = localStorage.setItem("UltimoAcceso", fechaActual);
+   localStorage.setItem("nombreUsuario", nombre);
+   localStorage.setItem("UltimoAcceso", fechaActual);
+   localStorage.setItem("ganadas", 0);
 }
 
 
@@ -106,6 +114,10 @@ function jugar() {
     const labelAdivinada = document.getElementById("adivinada");
     const labelPista = document.getElementById("pista");
 
+    if (estadoVisible.includes(letra)) {
+        alert("Ya se ingreso la letra, elija otra");
+        return; 
+    }
     let acierto = false;
 
         for (let i = 0; i < palabraOculta.length; i++) {
@@ -138,9 +150,11 @@ function jugar() {
 
         if (!estadoVisible.includes("_")) {
             document.getElementById("btnAdivinar").disabled = true;
+            div_resultado.innerHTML = "";
             const label = document.createElement("label");
             if (contadorAdivinado > contadoPistas) {
                 label.textContent = "Ganaste!!!!"
+                contador();
             } else {
                 label.textContent = "Perdiste!!!"
             }
@@ -149,6 +163,12 @@ function jugar() {
             div_resultado.style.display = "block";
         }
 
+}
+
+function contador() {
+    ganadasExistentes = localStorage.getItem("ganadas");
+    ganadasExistentes++;
+    localStorage.setItem("ganadas" , ganadasExistentes);
 }
 
 function jugarOtraPartida() {
@@ -168,5 +188,11 @@ function resetarValores() {
 
 function abandonar() {
     div_juego.style.display = "none";
+
+    let fechaActual = new Date().toLocaleDateString();
+    localStorage.setItem("UltimoAcceso", fechaActual);
+
+    contadorGanadas = localStorage.getItem("ganadas")
+    usuario();
     divComienzo.style.display = "block";
 }
