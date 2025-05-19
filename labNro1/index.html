@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial 2025</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body onload="usuario();">
+    <header>
+        <h1>Gestion Personal de Tareas</h1>
+    </header>
+    <section>
+        <article>
+                <div id="logueo" class="logueo">
+                   <fieldset>
+                        <legend>Logueo</legend>
+                        <label>Ingrese su nombre para loguearse</label>
+                        <input type="text" id="nombre">
+                        <button id="InicioSeccion">Iniciar Seccion</button>
+                        <button id="CrearUsuario">Crear Usuario</button>
+                    </fieldset>
+                </div>
+                <div id="bienvenida" class="bienvenida">
+                    <fieldset>    
+                    <h2 id="bienvenidaUsuario"></h2>
+                        <label id="visitaUsuario"></label>
+                        <label id="fechaVisita"></label>
+                        <button id="continuar">Continuar</button>
+                    </fieldset>
+                </div>
+
+                <div id="tareas" class="tareas">
+                    <fieldset>
+                        <div>
+                            <label>Ingrese una tarea</label>
+                            <input type="text" placeholder="Ingrese una descripcion" id="tarea">
+                            <button onclick="agregarTarea();">Agregar</button>
+                            <button onclick="borrarTodasTareas();">Borrar TODAS las tareas</button>
+                        </div>
+                        <div>
+                            <h2>Tarear Pendiente</h2>
+                            <label id="TareasPendiente"></label>
+                            <button onclick="finalizarTarea();">Finalizar Tarea</button>
+                        </div>
+                        <div id="tareasTerminadas">
+                            <h2>Tareas Terminadas</h2>
+                        </div>
+                    </fieldset>
+                </div>
+        </article>
+    </section>
+    <footer>
+        <p>&copy; 2025 Mi Página Web</p>
+    </footer>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

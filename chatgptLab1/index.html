@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor Personal de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h2>Ingreso al Gestor de Tareas</h2>
+        <input type="text" id="username" placeholder="Ingrese su nombre de usuario">
+        <button onclick="login()">Ingresar</button>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <div id="welcome"></div>
+        <button onclick="logout()">Cerrar sesión</button>
+
+        <div class="area">
+            <h3>Área de ingreso de tareas</h3>
+            <input type="text" id="new-task" placeholder="Descripción de la tarea">
+            <button onclick="addTask()">Agregar</button>
+            <button onclick="clearAllTasks()">Eliminar todas las tareas</button>
+        </div>
+
+        <div class="area">
+            <h3>Área de tareas pendientes</h3>
+            <ul id="pending-list"></ul>
+        </div>
+
+        <div class="area">
+            <h3>Área de tareas finalizadas</h3>
+            <ul id="finished-list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

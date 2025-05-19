@@ -1,0 +1,42 @@
+/* --- Estilos básicos para todo --- */
+body {
+  font-family: Arial, sans-serif;    /* Fuente legible y común */
+  background-color: #f0f8ff;         /* Color de fondo suave (azul claro) */
+  margin: 20px;                      /* Margen externo para que no quede pegado al borde */
+  text-align: center;                /* Centrar todo el texto */
+  color: #333;                      /* Color de texto oscuro para buena lectura */
+}
+
+/* --- Estilo para títulos --- */
+h2 {
+  color: #004080;                   /* Azul oscuro para que destaque */
+  margin-bottom: 20px;              /* Separación abajo */
+}
+
+/* --- Botones --- */
+button {
+  background-color: #008CBA;        /* Color azul de fondo */
+  border: none;                    /* Sin borde */
+  color: white;                    /* Texto blanco */
+  padding: 12px 24px;              /* Espacio interno (alto y ancho) */
+  font-size: 16px;                 /* Tamaño de fuente legible */
+  cursor: pointer;                 /* Cambia cursor al pasar por encima */
+  border-radius: 5px;              /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave al cambiar color */
+}
+
+button:hover {
+  background-color: #005f73;       /* Cambia color cuando pasas el mouse */
+}
+
+/* --- Mensajes o resultados --- */
+#result, #resultado {
+  margin-top: 20px;                /* Separación con lo de arriba */
+  font-size: 18px;                 /* Texto un poco más grande */
+  font-weight: bold;               /* Más grueso para destacar */
+}
+
+/* --- Para esconder botones (ejemplo del juego de reflejos) --- */
+.hidden {
+  display: none;
+}
