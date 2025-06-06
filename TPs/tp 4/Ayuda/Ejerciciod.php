@@ -8,15 +8,19 @@
 <body>
     <header><h1>Ejercicio D</h1></header>
     <?php
-    $num1 = 1;
-    do {
-        echo"<br> Tabla de multiplicar del: ".$num1."<br>";
+    for ($num = 1; $num <= 10; $num++) {
+        echo "<table>";
+        echo "Tabla de multiplicar del:".$num;
+        echo "<tr><th>*</th>";
         for ($i = 1; $i <= 10; $i++) {
-            echo " ".$i;
-        };
-        echo "<br>";
-        $num1 +=1;
-    } while ($num1 <= 10);
-    ?>    
+            echo "<th>$i</th>";
+        }
+        echo "</tr><tr><th>".$num."</th>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<td>" . ($num * $i) . "</td>";
+        }
+        echo "</tr></table><br>";
+    }
+    ?>  
 </body>
 </html>
