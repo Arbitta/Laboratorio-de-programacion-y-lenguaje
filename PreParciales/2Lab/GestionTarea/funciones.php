@@ -21,7 +21,7 @@ function bienvenida(Usuario_class $usuario)
     <input type="submit" value="Continuar" name="continuar">
 </form>
 <?php }
-function gestionTarea()
+function gestionTarea(Usuario_class $usuario)
 { ?>
 <form action="index.php" method="post">
     <h3>Ingrese una tarea</h3>
@@ -29,10 +29,18 @@ function gestionTarea()
     <input type="submit" value="agregar" name="agregarTarea">
     <input type="submit" value="limpiar tarea" name="limpiarTarea">
     <h2>Tareaas Pendiente</h2>
-
+    <?php 
+    foreach ($usuario->getListaTareaPendiente() as $key => $value) {
+        echo "<label><input type='checkbox' name='tareaPendiente[]' value='$value'>$value</label>";
+    }
+    ?>
     <input type="submit" value="Terminar Tarea" name="terminarTarea">
     <h2>Tarea Finalizada</h2>
-    
+    <?php 
+    foreach ($usuario->getListaTareaFinalizada() as $value) {
+        echo "<label>$value</label>";
+    }
+    ?>
     <input type="submit" value="Salir" name="salir">
 
 </form>

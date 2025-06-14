@@ -40,5 +40,21 @@ class Usuario_class {
         $this->listaTareaPendiente[] = $tarea;
     }
     
+    public function limpiarTareas(){
+        $this->listaTareaPendiente = [];
+        $this->listaTareaFinalizada = [];
+    }
+
+    public function agregarTareaFinalizada($tarea){
+        $this->listaTareaFinalizada[]=$tarea;
+        $indice = array_search($tarea, $this->listaTareaPendiente);
+        unset($this->listaTareaPendiente[$indice]);
+        $this->listaTareaPendiente = array_values($this->listaTareaPendiente);
+    }
+
+    public function actualizarVisita(){
+        $this->cantVisita++;
+        $this->ultimaConexion = date("H:i");
+    }
 }
 ?>
