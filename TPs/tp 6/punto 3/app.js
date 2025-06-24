@@ -50,4 +50,44 @@ function calculoCompra() {
     } else {
         label.textContent = "Importe total: $"+(numero * precio);
     }
+    document.getElementById("paises").style.display = "block";
+}
+
+function mostrarCiudad() {
+    var idPais = document.getElementById("idPaisSelect").value;
+    var ciudadSelect = document.getElementById("idCiudadesSelect");
+    ciudadSelect.innerHTML ="";
+    
+    if (idPais === "" || idPais ==="0") {
+        ciudadSelect.innerHTML = "<option value=''>Seleccione una ciudad</option>";
+        return;
+    }
+
+    var peticion = new XMLHttpRequest();
+    peticion.open("GET", "jsonCiudad.php?idPais="+idPais, true);
+    peticion.onreadystatechange = cargoCiudades;
+    peticion.send(null);
+
+    function cargoCiudades(){
+        if ((peticion.readyState == 4) && (peticion.status==200)){
+            var myObj = JSON.parse(peticion.responseText);
+            myObj.forEach(element => {
+                var option =document.createElement("option");
+                option.value = element.importe;
+                option.text = element.nombre;
+                ciudadSelect.appendChild(option);
+            });
+        }
+    }
+    document.getElementById("total").style.display = "block";
+}
+
+function calculoTotal() {
+    var precio = document.getElementById("precioProducto").value;
+    var cantidad = document.getElementById("idCompra").value;
+    var ciudadSelect = document.getElementById("idCiudadesSelect");
+    var impuesto = ciudadSelect.options[ciudadSelect.selectedIndex].value;
+
+    var total = (precio * cantidad) + ((precio * cantidad) * impuesto);
+    document.getElementById("resultadoTotal").textContent = "Total: $" + total;
 }
