@@ -1,5 +1,7 @@
 var tabla = document.getElementById("tablasEmpresa");
+var divCuarto = document.getElementById("resultadoSecundarios");
 var peticion;
+var peticionServicio;
 
 function listadoEmpresa() {
     var selectFiltro1 = document.getElementById("primerFiltro").value;
@@ -12,16 +14,19 @@ function listadoEmpresa() {
     var nombre =document.createElement("th");
     var paisRegistrado = document.createElement("th");
     var direccion = document.createElement("th");
+    var cant = document.createElement("th");
 
     logo.textContent = "Logo";
     nombre.textContent = "Nombre de la empresa";
     paisRegistrado.textContent = "Pais registrado";
     direccion.textContent = "Enlace";
+    cant.textContent = "Cantidad de servicios";
 
     encabezado.appendChild(logo);
     encabezado.appendChild(nombre);
     encabezado.appendChild(paisRegistrado);
     encabezado.appendChild(direccion);
+    encabezado.appendChild(cant);
 
     tabla.appendChild(encabezado);
 
@@ -71,6 +76,8 @@ function cargoEmpresa(){
             var celdaEnlace = document.createElement("td");
             var a = document.createElement("a");
 
+            var celdaCantServicios = document.createElement("td");
+
             img.src = element.logoEmpresa;
             img.alt = "logo de la empresa";
             img.width = 50;
@@ -92,10 +99,13 @@ function cargoEmpresa(){
             a.target = "_blank";
             celdaEnlace.appendChild(a);
 
+            celdaCantServicios.textContent = element.cantServicios;
+
             fila.appendChild(celdaLogo);
             fila.appendChild(celdaNombre);
             fila.appendChild(celdaPaisRegistrado);
             fila.appendChild(celdaEnlace);
+            fila.appendChild(celdaCantServicios);
 
             tabla.appendChild(fila);
             
@@ -105,14 +115,58 @@ function cargoEmpresa(){
 }
 
 function mostrarServiciosEmpresa(idEmpresa, origen, destino) {
-    divCuarto = document.getElementById("resultadoSecundarios");
-    divCuarto.innerHTML = "";
-
     if (origen !== "0" && destino === "0") {
-        ///solo se ve la empresa con el origen
+        serviciosUnFiltro(idEmpresa,origen);
     } else if (origen === "0" && destino !== "0") {
-        //
+        serviciosDosFiltro(idEmpresa, destino);
     } else if (origen !== "0" && destino !== "0"){
+        servicoAmbosFiltro(idEmpresa, origen, destino);
+    }
+}
 
+function serviciosUnFiltro(idEmpresa, origen) {
+    peticionServicio = new XMLHttpRequest();
+    peticionServicio.open("GET", "jsonServicios.php?idEmpresa="+idEmpresa + "&origen="+origen, true);
+    peticionServicio.onreadystatechange = cargoServicios;
+    peticionServicio.send(null);
+}
+
+function serviciosDosFiltro(idEmpresa, destino) {
+    peticionServicio = new XMLHttpRequest();
+    peticionServicio.open("GET", "jsonServicios.php?idEmpresa="+idEmpresa + "&destino="+destino, true);
+    peticionServicio.onreadystatechange = cargoServicios;
+    peticionServicio.send(null);
+}
+
+function servicoAmbosFiltro(idEmpresa, origen, destino) {
+    peticionServicio = new XMLHttpRequest();
+    peticionServicio.open("GET", "jsonServicios.php?idEmpresa="+idEmpresa + "&origen="+origen +"&destino="+destino, true);
+    peticionServicio.onreadystatechange = cargoServicios;
+    peticionServicio.send(null);
+}
+
+function cargoServicios() {
+    if ((peticionServicio.readyState == 4) && (peticionServicio.status == 200)) {
+        var myObj = JSON.parse(peticionServicio.responseText);
+        
+        divCuarto.innerHTML = ""; // Limpiar contenido anterior
+
+        var lista = document.createElement("ul");
+
+        myObj.forEach(servicio => {
+            var item = document.createElement("li");
+            item.innerHTML = `
+                <strong>${servicio.nroServicio}</strong><br>
+                Estación origen: ${servicio.estacionOrigen}<br>
+                Estación destino: ${servicio.estacionDestino}<br>
+                Hora salida: ${servicio.horaSalida}<br>
+                Hora llegada: ${servicio.horaLlegada}<br>
+                Frecuencia: ${servicio.frecuencia}<br>
+                Precio: € ${servicio.precio}
+            `;
+            lista.appendChild(item);
+        });
+
+        divCuarto.appendChild(lista);
     }
 }

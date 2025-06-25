@@ -5,6 +5,7 @@ class Empresas_class{
     private $paisEmpresa;
     private $webEmpresa;
     private $logoEmpresa;
+    private $cantServicios;
 
     function __construct(){
     }
@@ -49,10 +50,18 @@ class Empresas_class{
         $this->logoEmpresa = $logoEmpresa;
     }
 
+    public function getCantVisita(){
+        return $this->cantServicios;
+    }
+
+    public function setCantVisita($cantVisita){
+        $this->cantServicios = $cantVisita;
+    }
+
     public static function getListaTrenesUnFiltro($filtro){
         $listaEmpresa = array();
         $bd = new mysqli("localhost", "root", "","raileurope");
-        $query = "SELECT * FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadOrigenServicio = '$filtro' GROUP BY e.idEmpresa";
+        $query = "SELECT DISTINCT e.idEmpresa, e.nombreEmpresa, e.paisEmpresa, e.logoEmpresa, e.webEmpresa, COUNT(s.idServicio) AS cantidadServicios FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadOrigenServicio = '$filtro' GROUP BY e.idEmpresa;";
         $resultado = $bd->query($query);
         while ($registro = $resultado->fetch_object()){
             $empresa = new Empresas_class();
@@ -61,6 +70,7 @@ class Empresas_class{
             $empresa->setPaisEmpresa($registro->paisEmpresa);
             $empresa->setWebEmpresa($registro->webEmpresa);
             $empresa->setLogoEmpresa($registro->logoEmpresa);
+            $empresa->setCantVisita($registro->cantidadServicios);
             $listaEmpresa[] = $empresa;
         }
         return $listaEmpresa;
@@ -69,7 +79,7 @@ class Empresas_class{
     public static function getListaTrenesDosFiltro($filtro){
         $listaEmpresa = array();
         $bd = new mysqli("localhost", "root", "", "raileurope");
-        $query = "SELECT * FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadDestinoServicio = '$filtro' GROUP BY e.idEmpresa";
+        $query = "SELECT DISTINCT e.idEmpresa, e.nombreEmpresa, e.paisEmpresa, e.logoEmpresa, e.webEmpresa, COUNT(s.idServicio) AS cantidadServicios FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadDestinoServicio = '$filtro' GROUP BY e.idEmpresa;";
         $resultado = $bd->query($query);
         while ($registro = $resultado->fetch_object()) {
             $empresa = new Empresas_class();
@@ -78,6 +88,7 @@ class Empresas_class{
             $empresa->setPaisEmpresa($registro->paisEmpresa);
             $empresa->setWebEmpresa($registro->webEmpresa);
             $empresa->setLogoEmpresa($registro->logoEmpresa);
+            $empresa->setCantVisita($registro->cantidadServicios);
             $listaEmpresa[] = $empresa;
         }
         return $listaEmpresa;
@@ -86,8 +97,7 @@ class Empresas_class{
     public static function getListaAmbosFiltros($filtro1 , $filtro2){
         $listaEmpresa = array();
         $bd = new mysqli("localhost", "root", "", "raileurope");
-        $query = "SELECT * FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadOrigenServicio = '$filtro1' 
-              AND s.ciudadDestinoServicio = '$filtro2' GROUP BY e.idEmpresa";
+        $query = "SELECT DISTINCT e.idEmpresa, e.nombreEmpresa, e.paisEmpresa, e.logoEmpresa, e.webEmpresa, COUNT(s.idServicio) AS cantidadServicios FROM empresas e INNER JOIN servicios s ON e.idEmpresa = s.idEmpresa WHERE s.ciudadOrigenServicio = '$filtro1'  AND s.ciudadDestinoServicio = '$filtro2' GROUP BY e.idEmpresa";
         $respuesta = $bd->query($query);
         while ($registro = $respuesta->fetch_object()) {
             $empresa = new Empresas_class();
@@ -96,6 +106,7 @@ class Empresas_class{
             $empresa->setPaisEmpresa($registro->paisEmpresa);
             $empresa->setWebEmpresa($registro->webEmpresa);
             $empresa->setLogoEmpresa($registro->logoEmpresa);
+            $empresa->setCantVisita($registro->cantidadServicios);
             $listaEmpresa[] = $empresa;
         }
         return $listaEmpresa;

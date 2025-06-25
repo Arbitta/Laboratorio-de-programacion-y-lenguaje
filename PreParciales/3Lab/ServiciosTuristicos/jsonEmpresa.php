@@ -23,7 +23,8 @@ function guardarJSON($lista){
         'nombreEmpresa' => $value->getNombreEmpresa(),
         'paisEmpresa' => $value->getPaisEmpresa(),
         'webEmpresa' => $value->getWebEmpresa(),
-        'logoEmpresa' => $value->getLogoEmpresa()
+        'logoEmpresa' => $value->getLogoEmpresa(),
+        'cantServicios' => $value->getCantVisita()
     ];
     };
 echo json_encode($resultado);

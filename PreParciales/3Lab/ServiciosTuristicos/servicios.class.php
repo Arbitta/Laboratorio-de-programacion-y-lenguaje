@@ -122,15 +122,60 @@ class Servicios_class{
     }
 
     public static function serviciosUnFiltro($idEmpresa, $primerFiltro){
-
+        $listaServicios = array();
+        $bd = new mysqli("localhost", "root", "", "raileurope");
+        $query = "SELECT nroServicio, estacionOrigenServicio, estacionDestinoServicio, horaSalidaServicio, horaLlegadaServicio, frecuenciaServicio, precioServicio FROM servicios WHERE idEmpresa = '$idEmpresa' AND ciudadOrigenServicio = '$primerFiltro';";
+        $resultado = $bd->query($query);
+        while ($registro = $resultado->fetch_object()) {
+            $servicios = new Servicios_class();
+            $servicios->setNroServicio($registro->nroServicio);
+            $servicios->setEstacionOrigen($registro->estacionOrigenServicio);
+            $servicios->setEstacionDestino($registro->estacionDestinoServicio);
+            $servicios->setHoraSalida($registro->horaSalidaServicio);
+            $servicios->setHoraLlegada($registro->horaLlegadaServicio);
+            $servicios->setFrecuencia($registro->frecuenciaServicio);
+            $servicios->setPrecio($registro->precioServicio);
+            $listaServicios[] = $servicios;
+        }
+        return $listaServicios;
     }
 
     public static function serviciosDosFiltro($idEmpresa, $segundoFiltro){
-
+        $listaServicios = array();
+        $bd = new mysqli("localhost", "root", "", "raileurope");
+        $query = "SELECT nroServicio, estacionOrigenServicio, estacionDestinoServicio, horaSalidaServicio, horaLlegadaServicio, frecuenciaServicio, precioServicio FROM servicios WHERE idEmpresa = '$idEmpresa' AND ciudadDestinoServicio = '$segundoFiltro';";
+        $resultado = $bd->query($query);
+        while ($registro = $resultado->fetch_object()) {
+            $servicios = new Servicios_class();
+            $servicios->setNroServicio($registro->nroServicio);
+            $servicios->setEstacionOrigen($registro->estacionOrigenServicio);
+            $servicios->setEstacionDestino($registro->estacionDestinoServicio);
+            $servicios->setHoraSalida($registro->horaSalidaServicio);
+            $servicios->setHoraLlegada($registro->horaLlegadaServicio);
+            $servicios->setFrecuencia($registro->frecuenciaServicio);
+            $servicios->setPrecio($registro->precioServicio);
+            $listaServicios[] = $servicios;
+        }
+        return $listaServicios;
     } 
 
     public static function serviciosAmbosFiltros($idEmpresa, $primerFiltro, $segundoFiltro){
-
+        $listaServicios = array();
+        $bd = new mysqli("localhost", "root", "", "raileurope");
+        $query = "SELECT nroServicio, estacionOrigenServicio, estacionDestinoServicio, horaSalidaServicio, horaLlegadaServicio, frecuenciaServicio, precioServicio FROM servicios WHERE idEmpresa = '$idEmpresa' AND ciudadOrigenServicio ='$primerFiltro' AND ciudadDestinoServicio = '$segundoFiltro';";
+        $resultado = $bd->query($query);
+        while ($registro = $resultado->fetch_object()) {
+            $servicios = new Servicios_class();
+            $servicios->setNroServicio($registro->nroServicio);
+            $servicios->setEstacionOrigen($registro->estacionOrigenServicio);
+            $servicios->setEstacionDestino($registro->estacionDestinoServicio);
+            $servicios->setHoraSalida($registro->horaSalidaServicio);
+            $servicios->setHoraLlegada($registro->horaLlegadaServicio);
+            $servicios->setFrecuencia($registro->frecuenciaServicio);
+            $servicios->setPrecio($registro->precioServicio);
+            $listaServicios[] = $servicios;
+        }
+        return $listaServicios;
     }
 
 }
